@@ -4,22 +4,23 @@
 
 {% block content %}
 
-<table border="1" cellpadding="8" cellspacing="0">
-    <tr>
-        <th scope="col">бортовой номер</th>
-        <th scope="col">модель</th>
-        <th scope="col">макс. грузоподъёмность</th>
-        <th scope="col">текущий вес</th>
-        <th scope="col">перегруз, %</th>
-    </tr>
-    {% for truck in trucks_list %}
-    <tr>
-        <td scope="row">{{ truck.number }}</td>
-        <td scope="row">{{ truck.truck_model }}</td>
-        <td scope="row">{{ truck.max_weight }}</td>
-        <td scope="row">{{ truck.current_weight }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tr>
+            <th scope="col">бортовой номер</th>
+            <th scope="col">модель</th>
+            <th scope="col">макс. грузоподъёмность</th>
+            <th scope="col">текущий вес</th>
+            <th scope="col">перегруз, %</th>
+        </tr>
+        {% for truck in trucks_list %}
+            <tr>
+                <td scope="row">{{ truck.number }}</td>
+                <td scope="row">{{ truck.truck_model }}</td>
+                <td scope="row">{{ truck.max_weight }}</td>
+                <td scope="row">{{ truck.current_weight }}</td>
+                <td scope="row">{{ truck.percentage }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 
 {% endblock %}
