@@ -15,7 +15,7 @@
         {% for truck in trucks_list %}
             <tr>
                 <td scope="row">{{ truck.number }}</td>
-                <td scope="row">{{ truck.truck_model }}</td>
+                <td scope="row">{{ truck.truck_model.name }}</td>
                 <td scope="row">{{ truck.max_weight }}</td>
                 <td scope="row">{{ truck.current_weight }}</td>
                 <td scope="row">{{ truck.percentage }}</td>
