@@ -9,7 +9,8 @@ from .models import Truck, TruckModel
 
 
 def index(request):
-    if request.GET['filter'] is None:
+    truck_models_list = TruckModel.objects.all()
+    if request.GET.get('filter') is None or request.GET.get('filter') == 'ALL':
         trucks_list = Truck.objects.all().annotate(
             percentage=Case(
                 When(max_weight__lt=F('current_weight'),
@@ -19,7 +20,7 @@ def index(request):
             ),
         )
 
-        context = {'trucks_list': trucks_list}
+        context = {'trucks_list': trucks_list, 'truck_models_list': truck_models_list}
         return render(request, 'truck/index.html', context)
     else:
         trucks_list = Truck.objects.all().annotate(
@@ -31,5 +32,5 @@ def index(request):
             ),
         ).filter(truck_model__name=request.GET['filter'])
 
-        context = {'trucks_list': trucks_list}
+        context = {'trucks_list': trucks_list, 'truck_models_list': truck_models_list}
         return render(request, 'truck/index.html', context)

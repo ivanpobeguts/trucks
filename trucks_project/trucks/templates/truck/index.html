@@ -4,6 +4,17 @@
 
 {% block content %}
 
+
+    <form method="get">
+        <select name="filter">
+            <option value="ALL">Все</option>
+            {% for truck_model in truck_models_list %}
+                <option value="{{ truck_model.name }}">{{ truck_model.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Submit"/>
+    </form>
+
     <table border="1" cellpadding="8" cellspacing="0">
         <tr>
             <th scope="col">бортовой номер</th>
