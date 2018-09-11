@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-from django.db.models import IntegerField, Case, Value, When, F, Func
+from django.db.models import IntegerField, Case, Value, When, F, Func, FloatField
 
 from .models import Truck, TruckModel
 
