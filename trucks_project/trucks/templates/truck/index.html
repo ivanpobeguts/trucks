@@ -3,35 +3,38 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-
-
-    <form method="get">
-        <select name="filter">
-            <option value="ALL">Все</option>
-            {% for truck_model in truck_models_list %}
-                <option value="{{ truck_model.name }}">{{ truck_model.name }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Submit"/>
-    </form>
-
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tr>
-            <th scope="col">бортовой номер</th>
-            <th scope="col">модель</th>
-            <th scope="col">макс. грузоподъёмность</th>
-            <th scope="col">текущий вес</th>
-            <th scope="col">перегруз, %</th>
-        </tr>
-        {% for truck in trucks_list %}
+    <div class="container">
+        <div class="pb-3 pt-3">
+            <form method="get">
+            <span class="navbar-text mr-3">
+              Модель:
+            </span>
+                <select name="filter" class="truck_filter mr-3">
+                    <option value="ALL">Все</option>
+                    {% for truck_model in truck_models_list %}
+                        <option value="{{ truck_model.name }}">{{ truck_model.name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="select_button btn btn-secondary btn-sm mr-3">Применить</button>
+            </form>
+        </div>
+        <table class="table table-bordered">
             <tr>
-                <td scope="row">{{ truck.number }}</td>
-                <td scope="row">{{ truck.truck_model.name }}</td>
-                <td scope="row">{{ truck.max_weight }}</td>
-                <td scope="row">{{ truck.current_weight }}</td>
-                <td scope="row">{{ truck.percentage }}</td>
+                <th scope="col">бортовой номер</th>
+                <th scope="col">модель</th>
+                <th scope="col">макс. грузоподъёмность</th>
+                <th scope="col">текущий вес</th>
+                <th scope="col">перегруз, %</th>
             </tr>
-        {% endfor %}
-    </table>
-
+            {% for truck in trucks_list %}
+                <tr>
+                    <td scope="row">{{ truck.number }}</td>
+                    <td scope="row">{{ truck.truck_model.name }}</td>
+                    <td scope="row">{{ truck.max_weight }}</td>
+                    <td scope="row">{{ truck.current_weight }}</td>
+                    <td scope="row">{{ truck.percentage }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}
