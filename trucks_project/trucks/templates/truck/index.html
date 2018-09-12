@@ -15,7 +15,7 @@
                         <option value="{{ truck_model.name }}">{{ truck_model.name }}</option>
                     {% endfor %}
                 </select>
-                <button type="submit" class="select_button btn btn-secondary btn-sm mr-3">Применить</button>
+                <button type="submit" class="btn btn-secondary btn-sm mr-3">Применить</button>
             </form>
         </div>
         <table class="table table-bordered">
@@ -30,7 +30,7 @@
                 <tr>
                     <td scope="row">{{ truck.number }}</td>
                     <td scope="row">{{ truck.truck_model.name }}</td>
-                    <td scope="row">{{ truck.max_weight }}</td>
+                    <td scope="row">{{ truck.truck_model.max_weight }}</td>
                     <td scope="row">{{ truck.current_weight }}</td>
                     <td scope="row">{{ truck.percentage }}</td>
                 </tr>

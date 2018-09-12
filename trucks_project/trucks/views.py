@@ -13,8 +13,8 @@ def index(request):
     if request.GET.get('filter', 'ALL') == 'ALL':
         trucks_list = Truck.objects.all().annotate(
             percentage=Case(
-                When(max_weight__lt=F('current_weight'),
-                     then=Func(100 * (F('max_weight') - F('current_weight')) / F('max_weight'), function='ABS')),
+                When(truck_model__max_weight__lt=F('current_weight'),
+                     then=Func(100 * (F('truck_model__max_weight') - F('current_weight')) / F('truck_model__max_weight'), function='ABS')),
                 default=Value(0),
                 output_field=IntegerField(),
             ),
@@ -22,8 +22,8 @@ def index(request):
     else:
         trucks_list = Truck.objects.all().annotate(
             percentage=Case(
-                When(max_weight__lt=F('current_weight'),
-                     then=Func(100 * (F('max_weight') - F('current_weight')) / F('max_weight'), function='ABS')),
+                When(truck_model__max_weight__lt=F('current_weight'),
+                     then=Func(100 * (F('truck_model__max_weight') - F('current_weight')) / F('truck_model__max_weight'), function='ABS')),
                 default=Value(0),
                 output_field=IntegerField(),
             ),
