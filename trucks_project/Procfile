@@ -1,1 +1,1 @@
-web: gunicorn truck_project.wsgi --log-file -
+web: python manage.py collectstatic --noinput; gunicorn trucks_project.wsgi --log-file -
